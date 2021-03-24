@@ -18,10 +18,10 @@ $router->get('/', function () use ($router) {
 });
 $router->group(['prefix' => 'api/'], function () use ($router) {
     $router->post('register', 'UserController@register');
-    $router->post('sign-in', 'LoginController@login');
+    $router->post('sign-in', 'UserController@login');
 
     $router->post('recover-password', 'SendResetPasswordController@sendResetLinkEmail');
-    $router->patch('recover-password', 'ResetPasswordController@reset');
+    $router->post('recover-password/reset', [ 'as' => 'password.reset', 'uses' => 'ResetPasswordController@reset' ]);
 
 
     $router->group([

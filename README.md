@@ -21,7 +21,7 @@ php artisan migrate
 
 #### 4 May use the PHP development server
 ```
-php -S localhost:8000 -t public
+php -S localhost:8001 -t public
 ```
 
 #### 5 Create new user and company
@@ -29,6 +29,15 @@ php -S localhost:8000 -t public
 ```
 php artisan db:seed --class=UserSeeder
 ```
+#### 6 You can test registration and login user
+
+```
+vendor/bin/phpunit --filter=testUserRegistration
+vendor/bin/phpunit --filter=testUserLogin
+```
+
+## Swagger documentation
+[http://localhost:8001/api/documentation](http://localhost:8001/api/documentation)
 
 ## Route list:
 ```

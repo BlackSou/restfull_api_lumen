@@ -6,6 +6,7 @@
     "type": "project",
     "require": {
         "php": "^7.3|^8.0",
+        "darkaonline/swagger-lume": "8.*",
         "guzzlehttp/guzzle": "^7.2",
         "illuminate/mail": "^8.33",
         "illuminate/notifications": "^8.33",

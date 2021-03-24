@@ -9,6 +9,67 @@ use App\Models\Company;
 
 class CompanyController extends Controller
 {
+    /**
+     * @OA\Post(
+     *     path="/api/user/{id}/companies",
+     *     tags={"User company"},
+     *     summary="Add company for user",
+     *     operationId="UserById",
+     *     @OA\Parameter(
+     *          name="id",
+     *          description="User id",
+     *          required=true,
+     *          in="path",
+     *          @OA\Schema(
+     *              type="integer"
+     *          )
+     *      ),
+     *     @OA\Parameter(
+     *         name="api_token",
+     *         in="query",
+     *         description="Api token can be obtained by login",
+     *         required=true,
+     *         @OA\Schema(
+     *             type="string"
+     *         )
+     *     ),
+     *     @OA\Parameter(
+     *         name="title",
+     *         in="query",
+     *         description="Title company",
+     *         required=true,
+     *         @OA\Schema(
+     *             type="string",
+     *         )
+     *     ),
+     *     @OA\Parameter(
+     *         name="phone",
+     *         in="query",
+     *         description="Phone company",
+     *         required=true,
+     *         @OA\Schema(
+     *             type="string",
+     *         )
+     *     ),
+     *     @OA\Parameter(
+     *         name="description",
+     *         in="query",
+     *         description="Description company",
+     *         required=true,
+     *         @OA\Schema(
+     *             type="string",
+     *         )
+     *     ),
+     *     @OA\Response(
+     *          response=200,
+     *          description="Successful operation",
+     *       ),
+     *     @OA\Response(
+     *         response=400,
+     *         description="Invalid email/password supplied"
+     *     )
+     * )
+     */
     public function addCompany(Request $request)
     {
         $rules = [
@@ -44,6 +105,40 @@ class CompanyController extends Controller
         }
     }
 
+    /**
+     * @OA\Get(
+     *     path="/api/user/{id}/companies",
+     *     operationId="UserById",
+     *     tags={"User company"},
+     *     summary="Get user company",
+     *     @OA\Parameter(
+     *          name="id",
+     *          description="User id",
+     *          required=true,
+     *          in="path",
+     *          @OA\Schema(
+     *              type="integer"
+     *          )
+     *      ),
+     *     @OA\Parameter(
+     *         name="api_token",
+     *         in="query",
+     *         description="Api token can be obtained by login",
+     *         required=true,
+     *         @OA\Schema(
+     *             type="string"
+     *         )
+     *     ),
+     *     @OA\Response(
+     *          response=200,
+     *          description="Successful operation",
+     *       ),
+     *     @OA\Response(
+     *         response=400,
+     *         description="Invalid email/password supplied"
+     *     )
+     * )
+     */
     public function getCompany($id)
     {
         $user_companies = User::find($id)->companies;

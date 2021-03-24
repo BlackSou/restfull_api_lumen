@@ -6,6 +6,30 @@ use Illuminate\Support\Facades\Password;
 
 class SendResetPasswordController extends Controller
 {
+    /**
+     * @OA\Post(
+     *     path="/api/recover-password",
+     *     tags={"Reset password user"},
+     *     summary="Send reset link by email",
+     *     @OA\Parameter(
+     *         name="email",
+     *         in="query",
+     *         description="Email user",
+     *         required=true,
+     *         @OA\Schema(
+     *             type="string",
+     *         )
+     *     ),
+     *     @OA\Response(
+     *          response=200,
+     *          description="Successful operation",
+     *       ),
+     *     @OA\Response(
+     *         response=400,
+     *         description="Invalid email/password supplied"
+     *     )
+     * )
+     */
     public function __construct()
     {
         $this->broker = 'users';
